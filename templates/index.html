@@ -3,18 +3,39 @@
 {% block content %}
 <div class="text-center">
     <h1 class="display-4">Task Manager</h1>
-    <p class="lead">Keep track of your student life.</p>
-
+    
     {% if not session.get('user_id') %}
+        <p class="lead">Keep track of your student life.</p>
         <div class="mt-5">
             <a href="/register" class="btn btn-primary btn-lg mx-2">Register</a>
             <a href="/login" class="btn btn-secondary btn-lg mx-2">Login</a>
         </div>
     {% else %}
-        <div class="mt-4">
-            <h3>Your Tasks</h3>
-            <p>No tasks found.</p>
-            <a href="/add" class="btn btn-success">Add New Task</a>
+        
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <form action="/add" method="POST" class="d-flex">
+                    <input type="text" name="content" class="form-control me-2" placeholder="What needs to be done?" required>
+                    <button type="submit" class="btn btn-success">Add</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <div class="list-group">
+                    {% for task in tasks %}
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ task.content }}</span>
+                            <div>
+                                <span class="badge bg-secondary">Pending</span>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-light">No tasks yet. Add one above!</div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     {% endif %}
 </div>
