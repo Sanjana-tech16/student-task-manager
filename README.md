@@ -6,6 +6,8 @@
 ![Python](https://img.shields.io/badge/python-v3.12-blue)
 ![Flask](https://img.shields.io/badge/flask-v3.0-green)
 
+## DONE BY : SANJANA S - BTECH IT
+
 ## 🌟 Overview
 Student Task Manager is a CRUD (Create, Read, Update, Delete) application built with **Flask** and **SQLite**. It features a modern, responsive UI designed with Bootstrap 5 and custom CSS, providing a seamless experience for managing personal to-do lists.
 
@@ -39,4 +41,3 @@ student-task-manager/
 ├── setup_db.py          # Database Initialization Script
 └── requirements.txt     # Project Dependencies
 
-#SANJANA S - B TECH IT
