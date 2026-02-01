@@ -89,6 +89,21 @@ def logout():
     session.pop('user_id', None)
     flash('You have been logged out.', 'info')
     return redirect(url_for('login'))
+@app.route('/delete/<int:id>')
+def delete(id):
+    task_to_delete = Task.query.get_or_404(id)
 
+    # Security: Make sure the user owns this task before deleting
+    if 'user_id' in session and task_to_delete.user_id == session['user_id']:
+        try:
+            db.session.delete(task_to_delete)
+            db.session.commit()
+            flash('Task deleted!', 'success')
+        except:
+            flash('There was a problem deleting that task', 'danger')
+    else:
+         flash('You are not authorized to delete this task', 'danger')
+
+    return redirect(url_for('home'))
 if __name__ == '__main__':
     app.run(debug=True)
