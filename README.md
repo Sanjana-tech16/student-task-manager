@@ -19,3 +19,5 @@ A full-stack web application built with Flask and SQLite to help students manage
 * **Backend:** Python, Flask
 * **Database:** SQLite, SQLAlchemy
 * **Frontend:** HTML5, CSS3, Bootstrap 5
+
+Project Status: Completed v1.0
